@@ -1,11 +1,10 @@
 import React from 'react'
-
+import Option from './Option'
 function Question({question, index, answer, disptch}) {
   return (
     <div>
-      <li>
-        {question.question}
-      </li>
+        <h1>{question.question}</h1>
+        <Option></Option>
     </div>
   )
 }
