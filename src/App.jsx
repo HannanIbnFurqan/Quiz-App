@@ -10,7 +10,7 @@ function App() {
     }
   }
   const initialState = {
-    questions: [Quiz_Data.questions],
+    questions: [],
     status: 'loading',
     index: 0,
     answer: null,
