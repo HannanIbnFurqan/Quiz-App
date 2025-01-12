@@ -2,9 +2,9 @@ import React from 'react'
 import Option from './Option'
 function Question({question, index, answer, disptch}) {
   return (
-    <div>
+    <div style={{display: "flex", flexDirection:'column', }}>
         <h1>{question.question}</h1>
-        <Option></Option>
+        <Option question={question}></Option>
     </div>
   )
 }
