@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from 'react'
 import Quiz_Data from './data/question.json'
 import './App.css'
+import Question from './components/Question'
 
 function App() {
   const reducer = (status, action) => {
@@ -22,13 +23,12 @@ function App() {
   },[])
   return (
     <div>
-      <ul>
-        {questions.map((question,index)=> {
-          return(
-            <li key={index}>{question.question}</li>
-          )
-        })}
-      </ul>
+      {
+        status == "Ready" && questions.length > 0 ? 
+        <Question question={questions[index]} key={index} answer={answer} disptch={disptch}></Question> : 
+        'Loading....'
+      }
+      
     </div>
   )
 }
