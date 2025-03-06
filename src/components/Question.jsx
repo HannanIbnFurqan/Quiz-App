@@ -1,12 +1,7 @@
 import React from 'react'
-import Option from './Option'
-function Question({question, index, answer, disptch}) {
+
+export default function Question() {
   return (
-    <div style={{display: "flex", flexDirection:'column', }}>
-        <h1>{question.question}</h1>
-        <Option question={question}></Option>
-    </div>
+    <div>Question</div>
   )
 }
-
-export default Question

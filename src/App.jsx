@@ -1,35 +1,32 @@
-import { useEffect, useReducer } from 'react'
-import Quiz_Data from './data/question.json'
-import './App.css'
-import Question from './components/Question'
+import React, { useEffect, useReducer } from 'react'
+import quizeData from './data/question.json'
+const initialState = {
+  questions: [],
+  status: 'Loading',
+  index: 0,
+  answer: null,
+  secondsRemaining: null
+}
 
-function App() {
-  const reducer = (status, action) => {
-    switch (action.type) {
-      case "dataRecived":
-        return {...status, questions: action.payload, status: 'Ready'}
+const reducer = (state, action)=>{
+    switch(action.type){
+      case 'dataReceived':
+        return{
+          ...state,
+          questions: action.payload,
+          status: 'ready'
+
+        }
     }
-  }
-  const initialState = {
-    questions: [],
-    status: 'loading',
-    index: 0,
-    answer: null,
-    secondsRemaining: null
-  }
-  const [{ questions, status, index, answer, secondsRemaining }, disptch] = useReducer(reducer, initialState);
-  useEffect(() => {
-    disptch({ type: 'dataRecived', payload: Quiz_Data.questions })
-  },[])
+}
+function App() {
+const [{questions, index, status, answer, secondsRemaining}, dispatch] = useReducer(reducer, initialState);
+
+useEffect(()=>{
+  dispatch({type: 'dataReceived', payload: quizeData.questions})
+},[])
   return (
-    <div>
-      {
-        status == "Ready" && questions.length > 0 ? 
-        <Question question={questions[index]} key={index} answer={answer} disptch={disptch}></Question> : 
-        'Loading....'
-      }
-      
-    </div>
+    <div>App</div>
   )
 }
 
