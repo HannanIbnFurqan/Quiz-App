@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import quizeData from './data/question.json'
+import Question from './components/Question'
 const initialState = {
   questions: [],
   status: 'Loading',
@@ -22,11 +23,14 @@ const reducer = (state, action)=>{
 function App() {
 const [{questions, index, status, answer, secondsRemaining}, dispatch] = useReducer(reducer, initialState);
 
+
 useEffect(()=>{
   dispatch({type: 'dataReceived', payload: quizeData.questions})
 },[])
   return (
-    <div>App</div>
+    <div>
+       <Question questions={questions} index={index}></Question>
+    </div>
   )
 }
 

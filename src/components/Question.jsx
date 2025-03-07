@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function Question() {
+export default function Question({ questions, index }) {
+  if (!questions.length) {
+    return <div>Loading...</div>;  // Handle empty state
+  }
   return (
-    <div>Question</div>
-  )
+
+    <div>{questions[index].question}</div>
+  );
 }
