@@ -1,11 +1,15 @@
 import React from 'react';
-
-export default function Question({ questions, index }) {
+import Option from './Option';
+export default function Question({ questions, index, answer, dispatch }) {
   if (!questions.length) {
     return <div>Loading...</div>;  // Handle empty state
   }
   return (
 
-    <div>{questions[index].question}</div>
+   <div>
+     <h1>{questions[index].question}</h1>
+     <Option questions={questions} index={index} answer={answer} dispatch={dispatch}></Option>
+   </div>
+
   );
 }

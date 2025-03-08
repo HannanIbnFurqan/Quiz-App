@@ -1,10 +1,30 @@
-import React, { useReducer } from 'react'
+import React from 'react';
+import "./option.css"
+export default function Option({ questions, answer, index, dispatch }) {
+  console.log("Questions:", questions);
 
-export default function Option() {
-    const [state, dispatch] = useReducer(reducer, {count: 0})
+  if (!questions.length) {
+    return <div>Loading...</div>;
+  }
+
+ 
+  const hasAnswer = answer !== null;
+  console.log("hasAnswe = ", hasAnswer);
+
+
   return (
     <div>
-       <h1>{state.count}</h1>
+      <div>
+        {questions[index]?.options?.map((item, idx) => (
+          <button
+            key={idx}
+            onClick={() => dispatch({ type: "selectAnswer", payload: idx })}
+            className={`${hasAnswer ? index === questions[index].correctOption ? "correct": "wrong" : ""}`}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
